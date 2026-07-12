@@ -14,16 +14,16 @@ export function ToggleSwitch({ checked, onCheckedChange, label }: ToggleSwitchPr
       onCheckedChange={onCheckedChange}
       aria-label={label}
       className={cn(
-        "relative h-[28px] w-[64px] shrink-0 rounded-[100px] transition-colors duration-200 outline-none",
+        "relative h-[28px] w-[64px] shrink-0 rounded-[100px] outline-none transition-colors duration-200",
         "focus-visible:ring-2 focus-visible:ring-white/60",
         checked ? "bg-accent-green" : "bg-grey-800",
       )}
     >
-      {/* Figma knob: 38x24 wide pill, 2px inset, slides horizontally */}
       <Switch.Thumb
         className={cn(
-          "block h-[24px] w-[38px] rounded-[100px] bg-white transition-transform duration-200 will-change-transform",
-          "translate-x-[2px] translate-y-[2px] data-[state=checked]:translate-x-[24px]",
+          "absolute left-[2px] top-1/2 h-[24px] w-[38px] -translate-y-1/2 rounded-[100px] bg-white",
+          "transition-transform duration-200 will-change-transform",
+          "data-[state=checked]:translate-x-[22px]",
         )}
       />
     </Switch.Root>

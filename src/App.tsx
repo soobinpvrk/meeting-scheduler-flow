@@ -12,8 +12,8 @@ import { Result } from "@/screens/Result";
 import { CalendarAdded } from "@/screens/CalendarAdded";
 
 const STEPS: ((p: StepProps) => JSX.Element)[] = [
-  ScheduleConditions,
   OrganizerEmail,
+  ScheduleConditions,
   AttendeeEmails,
   ConfirmSchedule,
   ReactToCandidates,
