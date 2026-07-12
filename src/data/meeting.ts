@@ -24,17 +24,43 @@ export const meeting = {
 
 export type Candidate = {
   index: number;
-  date: string;
-  time: string;
+  /** date + time on one line, e.g. "7월 15일 화요일 오전 10:00-11:00" */
+  label: string;
   likes: number;
   maybe: number;
   hard: number;
+  notes: string[];
 };
 
 export const candidates: Candidate[] = [
-  { index: 1, date: "7월 15일 화요일", time: "오전 10:00-11:00", likes: 4, maybe: 2, hard: 0 },
-  { index: 2, date: "7월 16일 수요일", time: "오후 2:00-3:00", likes: 2, maybe: 3, hard: 1 },
-  { index: 3, date: "7월 17일 목요일", time: "오전 11:00-12:00", likes: 1, maybe: 2, hard: 3 },
+  {
+    index: 1,
+    label: "7월 15일 화요일 오전 10:00-11:00",
+    likes: 4,
+    maybe: 2,
+    hard: 0,
+    notes: ["참석자 6명 모두 비어 있어요", "수빈님은 앞 일정과 1시간 여유 있어요"],
+  },
+  {
+    index: 2,
+    label: "7월 16일 수요일 오후 2:00-3:00",
+    likes: 2,
+    maybe: 3,
+    hard: 1,
+    notes: [
+      "필수 참석자 4명은 비어 있어요",
+      "선택 참석자 1명은 일정이 있어요",
+      "수빈님은 바로 앞에 일정 있어요",
+    ],
+  },
+  {
+    index: 3,
+    label: "7월 18일 금요일 오전 11:00-12:00",
+    likes: 1,
+    maybe: 2,
+    hard: 3,
+    notes: ["참석자 6명 모두 비어 있어요", "수빈님은 이후 일정이 없어요"],
+  },
 ];
 
 export const result = {

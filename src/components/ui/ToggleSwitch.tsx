@@ -7,6 +7,11 @@ type ToggleSwitchProps = {
   label?: string;
 };
 
+/**
+ * Figma toggle: 64x28 track, 38x24 white pill knob.
+ * Knob is vertically centered via top-1/2 + -translate-y-1/2 (stays centered
+ * in every state) and slides horizontally by 22px when checked.
+ */
 export function ToggleSwitch({ checked, onCheckedChange, label }: ToggleSwitchProps) {
   return (
     <Switch.Root

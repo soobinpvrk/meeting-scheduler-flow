@@ -16,8 +16,8 @@ const STEPS: ((p: StepProps) => JSX.Element)[] = [
   ScheduleConditions,
   AttendeeEmails,
   ConfirmSchedule,
-  ReactToCandidates,
   Loading,
+  ReactToCandidates,
   Result,
   CalendarAdded,
 ];
