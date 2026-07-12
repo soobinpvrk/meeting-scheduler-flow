@@ -1,25 +1,18 @@
-import { CalendarPlus } from "lucide-react";
 import { toast } from "sonner";
 import { PhoneFrame } from "@/components/chrome/PhoneFrame";
-import { BottomCTA } from "@/components/chrome/BottomCTA";
-import { ScreenTitle } from "@/components/ui/ScreenTitle";
 import { GlassCard } from "@/components/ui/Card";
 import { meeting, result } from "@/data/meeting";
 import type { StepProps } from "@/flow";
 
-export function CalendarAdded({ goTo, onBack }: StepProps) {
+export function CalendarAdded({ onBack }: StepProps) {
   return (
-    <PhoneFrame
-      leading="back"
-      onLeading={onBack}
-      footer={<BottomCTA label="처음으로" onClick={() => goTo(0)} />}
-    >
-      <div className="pt-[80px]">
-        <ScreenTitle title={"참석자들에게\n확정된 시간을 알렸어요"} />
-      </div>
+    <PhoneFrame leading="back" onLeading={onBack} center>
+      <div className="flex w-full flex-col items-center gap-[28px]">
+        <h1 className="t-heading1 whitespace-pre-line text-center text-label-inverse">
+          {"참석자들에게\n확정된 시간을 알렸어요"}
+        </h1>
 
-      <div className="pt-[24px]">
-        <GlassCard className="p-[20px]">
+        <GlassCard className="w-full p-[20px] text-left">
           <p className="t-title1 mb-[8px] text-label-inverse">{meeting.title}</p>
           <div className="flex flex-col gap-[2px]">
             <p className="t-label1-subtle text-label-disabled">
@@ -33,10 +26,9 @@ export function CalendarAdded({ goTo, onBack }: StepProps) {
         <button
           type="button"
           onClick={() => toast.success("내 캘린더에 일정을 추가했어요")}
-          className="glass-strong mx-auto mt-[24px] flex h-[56px] items-center justify-center gap-[6px] rounded-c-full px-[24px] text-label-inverse transition-colors hover:bg-white/[0.16] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/60"
+          className="t-body1 flex h-[48px] items-center justify-center rounded-c-full bg-white px-[20px] text-label-default transition-transform active:scale-[0.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
-          <CalendarPlus className="size-5" strokeWidth={2} />
-          <span className="t-title1-strong">캘린더에 추가</span>
+          캘린더에 추가하기
         </button>
       </div>
     </PhoneFrame>

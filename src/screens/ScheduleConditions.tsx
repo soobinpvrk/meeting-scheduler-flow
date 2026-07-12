@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { CircleDashed } from "lucide-react";
 import { PhoneFrame } from "@/components/chrome/PhoneFrame";
 import { BottomCTA } from "@/components/chrome/BottomCTA";
 import { ScreenTitle } from "@/components/ui/ScreenTitle";
@@ -56,7 +55,7 @@ export function ScheduleConditions({ onNext, onBack }: StepProps) {
         <section className="flex flex-col gap-[8px]">
           <FieldLabel>진행 희망 기간</FieldLabel>
           <div className="glass overflow-hidden rounded-c-2xl">
-            <DateRow icon label="시작" date="2026. 7. 6" time="오전 10:00" />
+            <DateRow label="시작" date="2026. 7. 6" time="오전 10:00" />
             <div className="mx-[16px] h-px bg-white/10" />
             <DateRow label="종료" date="2026. 7. 10" time="오후 2:00" />
           </div>
@@ -80,7 +79,6 @@ function DateRow({
   date,
   time,
 }: {
-  icon?: boolean;
   label: string;
   date: string;
   time: string;
@@ -90,7 +88,24 @@ function DateRow({
       type="button"
       className="flex w-full items-center gap-[8px] py-[14px] pl-[8px] pr-[16px] text-left"
     >
-      <CircleDashed className="size-6 shrink-0 text-label-muted" strokeWidth={1.6} />
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        className="shrink-0"
+        aria-hidden
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="9"
+          fill="none"
+          stroke="#8c959e"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeDasharray="2.4 3"
+        />
+      </svg>
       <span className="t-body1 flex-1 text-label-muted">{label}</span>
       <span className="t-body1 flex items-center gap-[8px] text-label-inverse">
         <span>{date}</span>

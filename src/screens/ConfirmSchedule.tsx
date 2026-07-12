@@ -27,7 +27,7 @@ export function ConfirmSchedule({ onNext, onBack }: StepProps) {
       <ScreenTitle title="잡아야 할 일정을 확인할게요" />
 
       <div className="flex flex-col gap-[16px] pb-[24px] pt-[32px]">
-        <GlowCard className="h-[144px]">
+        <GlowCard>
           <div className="flex flex-col gap-[8px] p-[20px]">
             <p className="t-title1 text-label-inverse">{meeting.title}</p>
             <div className="flex flex-col gap-[4px]">

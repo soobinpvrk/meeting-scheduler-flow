@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Toaster } from "sonner";
 import type { StepProps } from "@/flow";
 import { ScheduleConditions } from "@/screens/ScheduleConditions";
@@ -60,7 +61,7 @@ export default function App() {
         </motion.div>
       </AnimatePresence>
 
-      <StepDots count={STEPS.length} index={index} onDot={goTo} />
+      <Pager count={STEPS.length} index={index} onGo={goTo} />
 
       <Toaster
         position="top-center"
@@ -78,31 +79,39 @@ export default function App() {
   );
 }
 
-function StepDots({
+function Pager({
   count,
   index,
-  onDot,
+  onGo,
 }: {
   count: number;
   index: number;
-  onDot: (i: number) => void;
+  onGo: (i: number) => void;
 }) {
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-3 z-50 flex justify-center">
-      <div className="pointer-events-auto flex gap-1.5 rounded-full bg-black/40 px-3 py-2 backdrop-blur">
-        {Array.from({ length: count }).map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            aria-label={`${i + 1}단계로 이동`}
-            aria-current={i === index}
-            onClick={() => onDot(i)}
-            className={
-              "h-1.5 rounded-full transition-all " +
-              (i === index ? "w-4 bg-white" : "w-1.5 bg-white/35 hover:bg-white/60")
-            }
-          />
-        ))}
+    <div className="pointer-events-none fixed inset-x-0 bottom-4 z-50 flex justify-center">
+      <div className="pointer-events-auto flex items-center gap-1 rounded-full bg-black/50 px-2 py-1.5 ring-1 ring-white/10 backdrop-blur">
+        <button
+          type="button"
+          aria-label="이전 화면"
+          disabled={index === 0}
+          onClick={() => onGo(index - 1)}
+          className="flex size-8 items-center justify-center rounded-full text-white/80 transition-colors hover:bg-white/10 disabled:opacity-30 disabled:hover:bg-transparent"
+        >
+          <ChevronLeft className="size-5" strokeWidth={2.2} />
+        </button>
+        <span className="min-w-[52px] text-center text-[13px] font-medium tabular-nums text-white/90">
+          {index + 1} / {count}
+        </span>
+        <button
+          type="button"
+          aria-label="다음 화면"
+          disabled={index === count - 1}
+          onClick={() => onGo(index + 1)}
+          className="flex size-8 items-center justify-center rounded-full text-white/80 transition-colors hover:bg-white/10 disabled:opacity-30 disabled:hover:bg-transparent"
+        >
+          <ChevronRight className="size-5" strokeWidth={2.2} />
+        </button>
       </div>
     </div>
   );

@@ -1,15 +1,15 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { StatusBar } from "./StatusBar";
 import { TopBar } from "./TopBar";
 import { HomeIndicator } from "./HomeIndicator";
 
 type PhoneFrameProps = {
   children: ReactNode;
   footer?: ReactNode;
+  /** leading icon in the top bar: back chevron, close X, or none */
   leading?: "back" | "close" | "none";
   onLeading?: () => void;
-  /** center content vertically (loading / result screens) */
+  /** center content vertically (loading / completion screens) */
   center?: boolean;
   /** extra top-to-bottom overlay tint (result screen) */
   overlay?: boolean;
@@ -45,9 +45,9 @@ export function PhoneFrame({
           />
         )}
 
-        {/* Top chrome */}
+        {/* Top chrome: safe-area spacer (no iOS status bar) + top bar with back button */}
         <div className="relative z-20 shrink-0">
-          <StatusBar />
+          <div className="h-[44px]" />
           <TopBar leading={leading} onLeading={onLeading} />
         </div>
 
